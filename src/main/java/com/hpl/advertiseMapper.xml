@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hpl.advertiseMapper">
+  <resultMap id="BaseResultMap" type="com.hpl.advertise">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="position" jdbcType="TINYINT" property="position" />
+    <result column="title_zh" jdbcType="VARCHAR" property="titleZh" />
+    <result column="title_en" jdbcType="VARCHAR" property="titleEn" />
+    <result column="pic_zh" jdbcType="VARCHAR" property="picZh" />
+    <result column="pic_en" jdbcType="VARCHAR" property="picEn" />
+    <result column="svga_zh" jdbcType="VARCHAR" property="svgaZh" />
+    <result column="svga_en" jdbcType="VARCHAR" property="svgaEn" />
+    <result column="share_status" jdbcType="TINYINT" property="shareStatus" />
+    <result column="share_text_zh" jdbcType="VARCHAR" property="shareTextZh" />
+    <result column="share_text_en" jdbcType="VARCHAR" property="shareTextEn" />
+    <result column="redirect_type" jdbcType="TINYINT" property="redirectType" />
+    <result column="redirect_url" jdbcType="VARCHAR" property="redirectUrl" />
+    <result column="redirect_url_android" jdbcType="VARCHAR" property="redirectUrlAndroid" />
+    <result column="redirect_url_ios" jdbcType="VARCHAR" property="redirectUrlIos" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="show_order" jdbcType="INTEGER" property="showOrder" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, position, title_zh, title_en, pic_zh, pic_en, svga_zh, svga_en, share_status, 
+    share_text_zh, share_text_en, redirect_type, redirect_url, redirect_url_android, 
+    redirect_url_ios, start_time, end_time, show_order, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from advertise
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from advertise
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hpl.advertise">
+    insert into advertise (id, position, title_zh, 
+      title_en, pic_zh, pic_en, 
+      svga_zh, svga_en, share_status, 
+      share_text_zh, share_text_en, redirect_type, 
+      redirect_url, redirect_url_android, redirect_url_ios, 
+      start_time, end_time, show_order, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{position,jdbcType=TINYINT}, #{titleZh,jdbcType=VARCHAR}, 
+      #{titleEn,jdbcType=VARCHAR}, #{picZh,jdbcType=VARCHAR}, #{picEn,jdbcType=VARCHAR}, 
+      #{svgaZh,jdbcType=VARCHAR}, #{svgaEn,jdbcType=VARCHAR}, #{shareStatus,jdbcType=TINYINT}, 
+      #{shareTextZh,jdbcType=VARCHAR}, #{shareTextEn,jdbcType=VARCHAR}, #{redirectType,jdbcType=TINYINT}, 
+      #{redirectUrl,jdbcType=VARCHAR}, #{redirectUrlAndroid,jdbcType=VARCHAR}, #{redirectUrlIos,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{showOrder,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hpl.advertise">
+    insert into advertise
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="titleZh != null">
+        title_zh,
+      </if>
+      <if test="titleEn != null">
+        title_en,
+      </if>
+      <if test="picZh != null">
+        pic_zh,
+      </if>
+      <if test="picEn != null">
+        pic_en,
+      </if>
+      <if test="svgaZh != null">
+        svga_zh,
+      </if>
+      <if test="svgaEn != null">
+        svga_en,
+      </if>
+      <if test="shareStatus != null">
+        share_status,
+      </if>
+      <if test="shareTextZh != null">
+        share_text_zh,
+      </if>
+      <if test="shareTextEn != null">
+        share_text_en,
+      </if>
+      <if test="redirectType != null">
+        redirect_type,
+      </if>
+      <if test="redirectUrl != null">
+        redirect_url,
+      </if>
+      <if test="redirectUrlAndroid != null">
+        redirect_url_android,
+      </if>
+      <if test="redirectUrlIos != null">
+        redirect_url_ios,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="showOrder != null">
+        show_order,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=TINYINT},
+      </if>
+      <if test="titleZh != null">
+        #{titleZh,jdbcType=VARCHAR},
+      </if>
+      <if test="titleEn != null">
+        #{titleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="picZh != null">
+        #{picZh,jdbcType=VARCHAR},
+      </if>
+      <if test="picEn != null">
+        #{picEn,jdbcType=VARCHAR},
+      </if>
+      <if test="svgaZh != null">
+        #{svgaZh,jdbcType=VARCHAR},
+      </if>
+      <if test="svgaEn != null">
+        #{svgaEn,jdbcType=VARCHAR},
+      </if>
+      <if test="shareStatus != null">
+        #{shareStatus,jdbcType=TINYINT},
+      </if>
+      <if test="shareTextZh != null">
+        #{shareTextZh,jdbcType=VARCHAR},
+      </if>
+      <if test="shareTextEn != null">
+        #{shareTextEn,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectType != null">
+        #{redirectType,jdbcType=TINYINT},
+      </if>
+      <if test="redirectUrl != null">
+        #{redirectUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectUrlAndroid != null">
+        #{redirectUrlAndroid,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectUrlIos != null">
+        #{redirectUrlIos,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="showOrder != null">
+        #{showOrder,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hpl.advertise">
+    update advertise
+    <set>
+      <if test="position != null">
+        position = #{position,jdbcType=TINYINT},
+      </if>
+      <if test="titleZh != null">
+        title_zh = #{titleZh,jdbcType=VARCHAR},
+      </if>
+      <if test="titleEn != null">
+        title_en = #{titleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="picZh != null">
+        pic_zh = #{picZh,jdbcType=VARCHAR},
+      </if>
+      <if test="picEn != null">
+        pic_en = #{picEn,jdbcType=VARCHAR},
+      </if>
+      <if test="svgaZh != null">
+        svga_zh = #{svgaZh,jdbcType=VARCHAR},
+      </if>
+      <if test="svgaEn != null">
+        svga_en = #{svgaEn,jdbcType=VARCHAR},
+      </if>
+      <if test="shareStatus != null">
+        share_status = #{shareStatus,jdbcType=TINYINT},
+      </if>
+      <if test="shareTextZh != null">
+        share_text_zh = #{shareTextZh,jdbcType=VARCHAR},
+      </if>
+      <if test="shareTextEn != null">
+        share_text_en = #{shareTextEn,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectType != null">
+        redirect_type = #{redirectType,jdbcType=TINYINT},
+      </if>
+      <if test="redirectUrl != null">
+        redirect_url = #{redirectUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectUrlAndroid != null">
+        redirect_url_android = #{redirectUrlAndroid,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectUrlIos != null">
+        redirect_url_ios = #{redirectUrlIos,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="showOrder != null">
+        show_order = #{showOrder,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hpl.advertise">
+    update advertise
+    set position = #{position,jdbcType=TINYINT},
+      title_zh = #{titleZh,jdbcType=VARCHAR},
+      title_en = #{titleEn,jdbcType=VARCHAR},
+      pic_zh = #{picZh,jdbcType=VARCHAR},
+      pic_en = #{picEn,jdbcType=VARCHAR},
+      svga_zh = #{svgaZh,jdbcType=VARCHAR},
+      svga_en = #{svgaEn,jdbcType=VARCHAR},
+      share_status = #{shareStatus,jdbcType=TINYINT},
+      share_text_zh = #{shareTextZh,jdbcType=VARCHAR},
+      share_text_en = #{shareTextEn,jdbcType=VARCHAR},
+      redirect_type = #{redirectType,jdbcType=TINYINT},
+      redirect_url = #{redirectUrl,jdbcType=VARCHAR},
+      redirect_url_android = #{redirectUrlAndroid,jdbcType=VARCHAR},
+      redirect_url_ios = #{redirectUrlIos,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      show_order = #{showOrder,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.hpl.advertise">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="position" jdbcType="TINYINT" property="position" />
+    <result column="title_zh" jdbcType="VARCHAR" property="titleZh" />
+    <result column="title_en" jdbcType="VARCHAR" property="titleEn" />
+    <result column="pic_zh" jdbcType="VARCHAR" property="picZh" />
+    <result column="pic_en" jdbcType="VARCHAR" property="picEn" />
+    <result column="svga_zh" jdbcType="VARCHAR" property="svgaZh" />
+    <result column="svga_en" jdbcType="VARCHAR" property="svgaEn" />
+    <result column="share_status" jdbcType="TINYINT" property="shareStatus" />
+    <result column="share_text_zh" jdbcType="VARCHAR" property="shareTextZh" />
+    <result column="share_text_en" jdbcType="VARCHAR" property="shareTextEn" />
+    <result column="redirect_type" jdbcType="TINYINT" property="redirectType" />
+    <result column="redirect_url" jdbcType="VARCHAR" property="redirectUrl" />
+    <result column="redirect_url_android" jdbcType="VARCHAR" property="redirectUrlAndroid" />
+    <result column="redirect_url_ios" jdbcType="VARCHAR" property="redirectUrlIos" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="show_order" jdbcType="INTEGER" property="showOrder" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, position, title_zh, title_en, pic_zh, pic_en, svga_zh, svga_en, share_status, 
+    share_text_zh, share_text_en, redirect_type, redirect_url, redirect_url_android, 
+    redirect_url_ios, start_time, end_time, show_order, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from advertise
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from advertise
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hpl.advertise">
+    insert into advertise (id, position, title_zh, 
+      title_en, pic_zh, pic_en, 
+      svga_zh, svga_en, share_status, 
+      share_text_zh, share_text_en, redirect_type, 
+      redirect_url, redirect_url_android, redirect_url_ios, 
+      start_time, end_time, show_order, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{position,jdbcType=TINYINT}, #{titleZh,jdbcType=VARCHAR}, 
+      #{titleEn,jdbcType=VARCHAR}, #{picZh,jdbcType=VARCHAR}, #{picEn,jdbcType=VARCHAR}, 
+      #{svgaZh,jdbcType=VARCHAR}, #{svgaEn,jdbcType=VARCHAR}, #{shareStatus,jdbcType=TINYINT}, 
+      #{shareTextZh,jdbcType=VARCHAR}, #{shareTextEn,jdbcType=VARCHAR}, #{redirectType,jdbcType=TINYINT}, 
+      #{redirectUrl,jdbcType=VARCHAR}, #{redirectUrlAndroid,jdbcType=VARCHAR}, #{redirectUrlIos,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{showOrder,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hpl.advertise">
+    insert into advertise
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="titleZh != null">
+        title_zh,
+      </if>
+      <if test="titleEn != null">
+        title_en,
+      </if>
+      <if test="picZh != null">
+        pic_zh,
+      </if>
+      <if test="picEn != null">
+        pic_en,
+      </if>
+      <if test="svgaZh != null">
+        svga_zh,
+      </if>
+      <if test="svgaEn != null">
+        svga_en,
+      </if>
+      <if test="shareStatus != null">
+        share_status,
+      </if>
+      <if test="shareTextZh != null">
+        share_text_zh,
+      </if>
+      <if test="shareTextEn != null">
+        share_text_en,
+      </if>
+      <if test="redirectType != null">
+        redirect_type,
+      </if>
+      <if test="redirectUrl != null">
+        redirect_url,
+      </if>
+      <if test="redirectUrlAndroid != null">
+        redirect_url_android,
+      </if>
+      <if test="redirectUrlIos != null">
+        redirect_url_ios,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="showOrder != null">
+        show_order,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=TINYINT},
+      </if>
+      <if test="titleZh != null">
+        #{titleZh,jdbcType=VARCHAR},
+      </if>
+      <if test="titleEn != null">
+        #{titleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="picZh != null">
+        #{picZh,jdbcType=VARCHAR},
+      </if>
+      <if test="picEn != null">
+        #{picEn,jdbcType=VARCHAR},
+      </if>
+      <if test="svgaZh != null">
+        #{svgaZh,jdbcType=VARCHAR},
+      </if>
+      <if test="svgaEn != null">
+        #{svgaEn,jdbcType=VARCHAR},
+      </if>
+      <if test="shareStatus != null">
+        #{shareStatus,jdbcType=TINYINT},
+      </if>
+      <if test="shareTextZh != null">
+        #{shareTextZh,jdbcType=VARCHAR},
+      </if>
+      <if test="shareTextEn != null">
+        #{shareTextEn,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectType != null">
+        #{redirectType,jdbcType=TINYINT},
+      </if>
+      <if test="redirectUrl != null">
+        #{redirectUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectUrlAndroid != null">
+        #{redirectUrlAndroid,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectUrlIos != null">
+        #{redirectUrlIos,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="showOrder != null">
+        #{showOrder,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hpl.advertise">
+    update advertise
+    <set>
+      <if test="position != null">
+        position = #{position,jdbcType=TINYINT},
+      </if>
+      <if test="titleZh != null">
+        title_zh = #{titleZh,jdbcType=VARCHAR},
+      </if>
+      <if test="titleEn != null">
+        title_en = #{titleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="picZh != null">
+        pic_zh = #{picZh,jdbcType=VARCHAR},
+      </if>
+      <if test="picEn != null">
+        pic_en = #{picEn,jdbcType=VARCHAR},
+      </if>
+      <if test="svgaZh != null">
+        svga_zh = #{svgaZh,jdbcType=VARCHAR},
+      </if>
+      <if test="svgaEn != null">
+        svga_en = #{svgaEn,jdbcType=VARCHAR},
+      </if>
+      <if test="shareStatus != null">
+        share_status = #{shareStatus,jdbcType=TINYINT},
+      </if>
+      <if test="shareTextZh != null">
+        share_text_zh = #{shareTextZh,jdbcType=VARCHAR},
+      </if>
+      <if test="shareTextEn != null">
+        share_text_en = #{shareTextEn,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectType != null">
+        redirect_type = #{redirectType,jdbcType=TINYINT},
+      </if>
+      <if test="redirectUrl != null">
+        redirect_url = #{redirectUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectUrlAndroid != null">
+        redirect_url_android = #{redirectUrlAndroid,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectUrlIos != null">
+        redirect_url_ios = #{redirectUrlIos,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="showOrder != null">
+        show_order = #{showOrder,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hpl.advertise">
+    update advertise
+    set position = #{position,jdbcType=TINYINT},
+      title_zh = #{titleZh,jdbcType=VARCHAR},
+      title_en = #{titleEn,jdbcType=VARCHAR},
+      pic_zh = #{picZh,jdbcType=VARCHAR},
+      pic_en = #{picEn,jdbcType=VARCHAR},
+      svga_zh = #{svgaZh,jdbcType=VARCHAR},
+      svga_en = #{svgaEn,jdbcType=VARCHAR},
+      share_status = #{shareStatus,jdbcType=TINYINT},
+      share_text_zh = #{shareTextZh,jdbcType=VARCHAR},
+      share_text_en = #{shareTextEn,jdbcType=VARCHAR},
+      redirect_type = #{redirectType,jdbcType=TINYINT},
+      redirect_url = #{redirectUrl,jdbcType=VARCHAR},
+      redirect_url_android = #{redirectUrlAndroid,jdbcType=VARCHAR},
+      redirect_url_ios = #{redirectUrlIos,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      show_order = #{showOrder,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
